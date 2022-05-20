@@ -12,10 +12,12 @@ COPY *.go ./
 RUN CGO_ENABLED=0 go build -o /dc-hello-world
 
 # Create image to bundle app
-FROM scratch
+# Using an image with tools, like a shell, rather than a scratch image to
+# enable easier debugging.
+FROM registry.suse.com/bci/bci-micro:15.3
 
-COPY --from=build /dc-hello-world /dc-hello-world
+COPY --from=build /dc-hello-world /usr/local/bin/dc-hello-world
 
 EXPOSE 3000
 
-CMD ["/dc-hello-world"]
+CMD ["/usr/local/bin/dc-hello-world"]
