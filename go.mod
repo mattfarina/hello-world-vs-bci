@@ -1,5 +1,3 @@
-module github.com/mattfarina/dc-hello-world
+module github.com/mattfarina/hello-world-vs-bci
 
-go 1.18
-
-require github.com/Masterminds/log-go v1.0.0
+go 1.21
